@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>歐盟包裝法與龍鑫</title>
+<style>
+:root{
+  --bg:#f5f6f3; --card:#ffffff; --ink:#1c2128; --muted:#5f6772; --line:#d8dcd4; --soft:#eef1ec;
+  --eu:#1f4fb8; --eu-soft:#e6edfb; --gold:#d9a400;
+  --good:#1f7a3a; --good-bg:#e5f4e9; --warn:#b44317; --warn-bg:#fcebe3; --info-bg:#eef3fb; --mid:#a86a00; --mid-bg:#fbf1dc;
+  --today:#d0342c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171b; --card:#1d2126; --ink:#e7e9ec; --muted:#9aa3ad; --line:#363c44; --soft:#252a30;
+    --eu:#7aa2ff; --eu-soft:#1f2a44; --gold:#f0c23a;
+    --good:#6fd08a; --good-bg:#1a3123; --warn:#ff9466; --warn-bg:#3b231a; --info-bg:#1e2738; --mid:#f2b84b; --mid-bg:#3a2f17;
+    --today:#ff6b63;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171b; --card:#1d2126; --ink:#e7e9ec; --muted:#9aa3ad; --line:#363c44; --soft:#252a30;
+  --eu:#7aa2ff; --eu-soft:#1f2a44; --gold:#f0c23a;
+  --good:#6fd08a; --good-bg:#1a3123; --warn:#ff9466; --warn-bg:#3b231a; --info-bg:#1e2738; --mid:#f2b84b; --mid-bg:#3a2f17;
+  --today:#ff6b63;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",system-ui,sans-serif;line-height:1.75;font-size:16px}
+.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 64px}
+header h1{font-size:1.7rem;margin:6px 0 4px;line-height:1.35}
+header .sub{color:var(--muted);font-size:.88rem;margin:0}
+.tl{font-size:.75rem;color:var(--eu);font-weight:700;letter-spacing:.05em}
+.status{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.pill{border-radius:999px;padding:4px 12px;font-size:.85rem;font-weight:700}
+.pill.red{background:var(--warn-bg);color:var(--warn)}
+.pill.blue{background:var(--eu-soft);color:var(--eu)}
+.pill.green{background:var(--good-bg);color:var(--good)}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin:14px -16px 18px;padding:8px 16px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap}
+nav a{font-size:.85rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink);text-decoration:none;background:var(--card)}
+nav a:hover{border-color:var(--eu)}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;scroll-margin-top:56px}
+section h2{font-size:1.22rem;margin:0 0 4px}
+.lead{color:var(--muted);margin:0 0 14px;font-size:.92rem}
+.src{font-size:.75rem;color:var(--muted);vertical-align:super;white-space:nowrap}
+.unit{color:var(--muted);font-size:.86rem}
+ol.plain{margin:0;padding-left:1.4em} ol.plain li{margin:5px 0}
+b.hl{background:linear-gradient(transparent 60%,rgba(217,164,0,.35) 60%)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.box{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--soft)}
+.box h3{margin:0 0 6px;font-size:1rem}
+.good{background:var(--good-bg);border-left:4px solid var(--good);padding:10px 14px;border-radius:6px;margin:8px 0}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn);padding:10px 14px;border-radius:6px;margin:8px 0}
+.info{background:var(--info-bg);border-left:4px solid var(--eu);padding:10px 14px;border-radius:6px;margin:8px 0}
+.midb{background:var(--mid-bg);border-left:4px solid var(--mid);padding:10px 14px;border-radius:6px;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+.tblwrap{overflow-x:auto}
+/* 名詞 */
+.term{border-bottom:1.5px dashed var(--eu);cursor:help;color:inherit}
+#gloss{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);max-width:min(560px,calc(100% - 32px));background:var(--card);border:2px solid var(--eu);border-radius:12px;padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,.25);z-index:20;display:none;font-size:.93rem}
+#gloss b{color:var(--eu)}
+#gloss .x{float:right;cursor:pointer;color:var(--muted);margin-left:10px}
+/* 判斷器 */
+.q{margin-bottom:14px}
+.q .qt{font-weight:700;margin-bottom:6px}
+.q .qh{color:var(--muted);font-size:.85rem;margin:-4px 0 6px}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{font:inherit;font-size:.9rem;padding:6px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-align:left}
+.opt:hover{border-color:var(--eu)}
+.opt.on{border-color:var(--eu);background:var(--eu-soft);font-weight:700}
+.q.off{opacity:.35;pointer-events:none}
+#verdict .item{border-radius:10px;padding:12px 14px;margin:8px 0;border:1px solid var(--line)}
+#verdict .item h4{margin:0 0 4px;font-size:1rem}
+#verdict .tag{display:inline-block;font-size:.75rem;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:6px;vertical-align:2px}
+.tag.now{background:var(--warn-bg);color:var(--warn)}
+.tag.later{background:var(--mid-bg);color:var(--mid)}
+.tag.ok{background:var(--good-bg);color:var(--good)}
+.tag.na{background:var(--soft);color:var(--muted)}
+.tag.tw{background:var(--eu-soft);color:var(--eu)}
+.calc{display:grid;grid-template-columns:minmax(260px,1fr) minmax(280px,1.1fr);gap:18px}
+@media (max-width:760px){.calc{grid-template-columns:1fr}}
+/* 時程 */
+.tlwrap{overflow-x:auto;padding-bottom:6px}
+.tlsvg{min-width:760px;width:100%;height:auto;display:block}
+.ms{cursor:pointer}
+.ms circle{stroke:var(--card);stroke-width:2}
+.ms:hover circle,.ms.on circle{stroke:var(--ink);stroke-width:2.5}
+.ms text{font-size:12px;fill:var(--ink)}
+.ms.dim{opacity:.18}
+#msInfo{min-height:90px;margin-top:8px}
+.seg2{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:10px;flex-wrap:wrap}
+.seg2 button{font:inherit;font-size:.86rem;padding:5px 12px;border:0;background:var(--bg);color:var(--ink);cursor:pointer}
+.seg2 button.on{background:var(--eu);color:#fff}
+/* 責任圖 */
+.flow svg{width:100%;height:auto;display:block}
+/* 空隙比 */
+.field{margin-bottom:10px}
+.field label{display:flex;justify-content:space-between;font-size:.9rem;font-weight:700}
+.field label span{font-weight:400;color:var(--muted)}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+input[type=number]{width:100%;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+input[type=range]{width:100%}
+.big{font-size:2.1rem;font-weight:800;line-height:1.2}
+.meter{height:22px;background:var(--soft);border-radius:6px;position:relative;overflow:hidden;margin:8px 0 4px}
+.meter .fill{height:100%;transition:width .25s}
+.meter .line{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.boxpic svg{width:100%;max-width:360px;display:block;margin:auto}
+/* 評等 */
+.grades{display:flex;gap:4px;margin:10px 0}
+.gr{flex:1;text-align:center;border-radius:8px;padding:8px 2px;font-weight:800;border:2px solid transparent;background:var(--soft);color:var(--muted)}
+.gr small{display:block;font-weight:400;font-size:.72rem}
+.gr.on{border-color:var(--ink);color:var(--ink)}
+.gr.A.on{background:var(--good-bg)} .gr.B.on{background:var(--good-bg)} .gr.C.on{background:var(--mid-bg)} .gr.X.on{background:var(--warn-bg)}
+/* checklist */
+.ck label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--line);border-radius:8px;margin:6px 0;background:var(--soft);cursor:pointer}
+.ck input{margin-top:6px;transform:scale(1.2)}
+.ck .who{font-size:.8rem;color:var(--muted)}
+.progress{font-weight:700;margin-bottom:6px}
+/* myths */
+.myths{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.myth{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--soft);cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.myth .q2{font-weight:700}
+.myth .a{display:none;margin-top:6px}
+.myth.open{border-color:var(--good)}
+.myth.open .a{display:block}
+.myth .hint{color:var(--muted);font-size:.8rem;margin-top:4px}
+.myth.open .hint{display:none}
+ol.srcs{font-size:.8rem;color:var(--muted);padding-left:1.6em}
+ol.srcs li{margin:3px 0;word-break:break-all}
+a{color:var(--eu)}
+.foot{color:var(--muted);font-size:.82rem;text-align:center;margin-top:24px}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+.myths{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr))}
+/* 手機版：時程直式清單、責任圖直式版，桌機隱藏 */
+.tllist,.flowm{display:none}
+.tllist{position:relative;margin:4px 0 0 8px;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.tli{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:none;border:0;padding:8px 8px 8px 10px;position:relative;cursor:pointer;border-radius:8px}
+.tli .dot{position:absolute;left:-26px;top:13px;width:14px;height:14px;border-radius:50%;border:2px solid var(--card)}
+.tli .tld{display:block;font-size:.8rem;color:var(--muted)}
+.tli .tlx{display:none;margin-top:4px;font-size:.92rem}
+.tli.on{background:var(--soft)}
+.tli.on .tlx{display:block}
+.tli.dim{opacity:.3}
+.tltoday{margin-left:-20px;padding:2px 0 2px 30px;border-top:2px solid var(--today);color:var(--today);font-weight:700;font-size:.8rem}
+.fbox{border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--card);text-align:center}
+.fbox.main{border:2.5px solid var(--eu)}
+.fbox small{display:block;color:var(--muted);font-size:.8rem}
+.fbox small.w{color:var(--warn)}
+.farr{text-align:center;color:var(--muted);font-size:.85rem;line-height:1.6}
+.feu{background:var(--eu-soft);border-radius:12px;padding:8px 10px 10px}
+.feut{color:var(--eu);font-weight:700;font-size:.85rem;text-align:center;margin-bottom:6px}
+.fback{border:2px dashed var(--warn);border-radius:10px;padding:8px 12px;margin:12px 0 6px;color:var(--ink)}
+.fback b{color:var(--warn)}
+.fback ol{margin:4px 0 0;padding-left:1.3em}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .wrap{padding:12px 12px 56px}
+  header h1{font-size:1.35rem}
+  nav{margin:12px -12px 14px;padding:8px 12px}
+  nav a{padding:6px 12px}
+  section{padding:14px;border-radius:12px;margin-bottom:14px}
+  section h2{font-size:1.12rem}
+  .src{white-space:normal}
+  .opt{padding:9px 12px}
+  .big{font-size:1.8rem}
+  .tlwrap,#msInfo,.flow>svg{display:none}
+  .tllist,.flowm{display:block}
+  /* 表格改成一列一張卡片，每格前面標欄名 */
+  .tblwrap table,.tblwrap tbody,.tblwrap tr,.tblwrap td{display:block;width:100%}
+  .tblwrap tr.hd{display:none}
+  .tblwrap tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:6px 12px;background:var(--card)}
+  .tblwrap td{border:0;padding:3px 0}
+  .tblwrap td[data-label]::before{content:attr(data-label);display:block;font-size:.75rem;color:var(--muted);font-weight:700}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="tl">第 2 版｜瓦楞知識庫 PPWR 卡（2026-10-06 依法規原文修正）＋SGS 課程講義對照｜理解階梯示範</div>
+  <h1>歐盟新包裝法 PPWR<br>對台灣紙箱廠到底有什麼影響？</h1>
+  <p class="sub">第 2 版：把 SGS 講義（2026-09-29 上課）逐項回歐盟法規原文核對後，修正了第 1 版「龍鑫不受直接管」的錯誤｜標「✎」的是這次改的地方｜標「🆕 新查」的是網路補查、尚未寫進卡片的消息｜虛線底的詞可以點｜整理日期：2026-10-06</p>
+  <div class="status">
+    <span class="pill red">● 2026-08-12 起已經在管</span>
+    <span class="pill blue">🆕 沒有延後（歐盟已書面否認）</span>
+    <span class="pill red">✎ 龍鑫是法定「供應商」，有交資料的義務</span>
+    <span class="pill green">對紙箱大多是好消息</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#s1">① 一分鐘結論</a><a href="#s2">② 我會被影響嗎</a><a href="#s3">③ 誰負責</a><a href="#s4">④ 時程</a><a href="#s5">⑤ 好消息／要注意</a><a href="#s6">⑥ 空隙比</a><a href="#s7">⑦ 回收評等</a><a href="#s8">⑧ 準備清單</a><a href="#s9">⑨ 台灣自己的規定</a><a href="#s10">⑩ 最新動態</a><a href="#s15">⑪ SGS 講義對照</a><a href="#s11">⑫ 誤會</a><a href="#s12">⑬ 還不知道的事</a><a href="#s14">來源</a>
+</nav>
+
+<!-- ① -->
+<section id="s1">
+  <div class="tl">第 1 層　白話短句</div>
+  <h2>① 一分鐘結論</h2>
+  <ol class="plain">
+    <li><b class="hl">PPWR 是歐盟的包裝法。</b>2026 年 8 月 12 日起，所有賣進歐盟的包裝都要遵守，紙箱也包括在內。<span class="src">總覽卡</span></li>
+    <li>它是「規則」不是「指令」：不用等各國另外立法，<b>27 國直接一體適用</b>。</li>
+    <li>✎ <b>替品牌商做紙箱的龍鑫，在法規上叫「<span class="term" data-g="supplier">供應商</span>」</b>，是受這部法管的業者之一。<span class="src">第 3 條</span></li>
+    <li>✎ 供應商<b>不用簽<span class="term" data-g="doc">符合性聲明</span></b>，那是品牌商的事。但第 16 條規定：<b>客戶要證明合規需要的資料，供應商要交出來。</b>這是法律義務，不只是客戶要求。<span class="src">第 16 條</span></li>
+    <li>實際上，歐盟政府很難直接來台灣查龍鑫；這條義務會透過客戶的合約和問卷找上門。拿不出來，訂單可能換別家做。</li>
+    <li>✎ <b>箱子上要能追溯（已經在管）：</b>品牌商要在包裝上印批號、公司名稱和地址。客戶可能會請龍鑫幫忙印。<span class="src">第 15 條</span></li>
+    <li><b>對紙箱來說，這部法大多是好消息：</b>紙箱不用改成可重複使用、不用證明再生紙比例（2032 年前歐盟會檢討）、一般運輸箱不用貼材質標示。</li>
+    <li><b>真正要注意的有 4 件：</b>油墨重金屬（現在就管）、直接碰食品的箱子（現在就管）、箱子不能比貨大太多（2030 起）、防水淋膜／上光／熱熔膠會影響回收評等（2030 起）。</li>
+    <li>很多細則還沒公布。<b>現在能做的，是先把每款箱子的材料資料備齊。</b></li>
+    <li>另外，台灣自己<b>已經有一條規定在管</b>：網購出貨用的瓦楞箱，回收紙要占 90% 以上。<span class="src">台灣因應卡</span></li>
+  </ol>
+</section>
+
+<!-- ② -->
+<section id="s2">
+  <div class="tl">第 3 層　互動網頁</div>
+  <h2>② 判斷器：這張訂單會被 PPWR 影響嗎？</h2>
+  <p class="lead">想一張實際的訂單，依序回答。右邊（手機在下面）會即時列出這張單要注意什麼。</p>
+  <div class="calc">
+    <div id="quiz"></div>
+    <div><div class="unit" style="font-weight:700;margin-bottom:4px">這張訂單的結果</div><div id="verdict"><div class="unit">先回答左邊第 1 題。</div></div></div>
+  </div>
+</section>
+
+<!-- ③ -->
+<section id="s3" class="flow">
+  <div class="tl">第 2 層　先看圖</div>
+  <h2>③ 誰負法律責任？資料又怎麼回頭找上你？</h2>
+  <p class="lead">實線箭頭是貨怎麼走，虛線箭頭是資料要求怎麼往回傳。✎ 第 2 版修正：<b>龍鑫也是法規裡受管的業者（供應商）</b>，最後那段虛線是法律義務，不只是客戶要求。簽符合性聲明、扛主要責任的仍然是品牌商。</p>
+  <svg viewBox="0 0 900 290" role="img" aria-label="責任與資料流向">
+    <defs>
+      <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="var(--muted)"/></marker>
+      <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="var(--warn)"/></marker>
+    </defs>
+    <rect x="455" y="10" width="440" height="200" rx="14" fill="var(--eu-soft)"/>
+    <text x="675" y="32" text-anchor="middle" font-size="13" fill="var(--eu)" font-weight="700">★ 歐盟境內：PPWR 直接管的範圍</text>
+    <g font-size="14" fill="var(--ink)">
+      <rect x="10" y="70" width="140" height="74" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="80" y="100" text-anchor="middle" font-weight="700">龍鑫</text><text x="80" y="122" text-anchor="middle" font-size="12" fill="var(--warn)">法定「供應商」</text>
+      <rect x="215" y="70" width="170" height="74" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="300" y="100" text-anchor="middle" font-weight="700">台灣品牌客戶</text><text x="300" y="122" text-anchor="middle" font-size="12" fill="var(--muted)">自有品牌＝製造商</text>
+      <rect x="470" y="70" width="190" height="74" rx="10" fill="var(--card)" stroke="var(--eu)" stroke-width="2.5"/>
+      <text x="565" y="100" text-anchor="middle" font-weight="700">歐盟進口商／品牌商</text><text x="565" y="122" text-anchor="middle" font-size="12" fill="var(--warn)">簽符合性聲明、扛責任</text>
+      <rect x="720" y="70" width="160" height="74" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="800" y="100" text-anchor="middle" font-weight="700">歐盟市場</text><text x="800" y="122" text-anchor="middle" font-size="12" fill="var(--muted)">主管機關會抽查</text>
+    </g>
+    <path d="M150 95 L212 95" stroke="var(--muted)" stroke-width="2" marker-end="url(#a1)"/>
+    <path d="M385 95 L467 95" stroke="var(--muted)" stroke-width="2" marker-end="url(#a1)"/>
+    <path d="M660 95 L717 95" stroke="var(--muted)" stroke-width="2" marker-end="url(#a1)"/>
+    <path d="M800 150 C800 250, 565 250, 565 150" stroke="var(--warn)" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#a2)"/>
+    <text x="690" y="246" text-anchor="middle" font-size="12" fill="var(--warn)">抽查：10 天內交出證明</text>
+    <path d="M520 150 C520 230, 300 230, 300 150" stroke="var(--warn)" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#a2)"/>
+    <text x="410" y="228" text-anchor="middle" font-size="12" fill="var(--warn)">採購合約、供應商問卷</text>
+    <path d="M260 150 C260 210, 80 210, 80 150" stroke="var(--warn)" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#a2)"/>
+    <text x="170" y="205" text-anchor="middle" font-size="12" fill="var(--warn)">第 16 條：交出合規資料</text>
+    <text x="450" y="282" text-anchor="middle" font-size="12" fill="var(--muted)">直接接歐盟客戶的單時，中間那格「台灣客戶」就不存在，資料要求會直接找上龍鑫</text>
+  </svg>
+  <div class="flowm">
+    <div class="fbox"><b>龍鑫</b><small class="w">法定「供應商」</small></div>
+    <div class="farr">↓ 貨</div>
+    <div class="fbox"><b>台灣品牌客戶</b><small>自有品牌＝製造商</small></div>
+    <div class="farr">↓ 貨</div>
+    <div class="feu">
+      <div class="feut">★ 歐盟境內：PPWR 直接管的範圍</div>
+      <div class="fbox main"><b>歐盟進口商／品牌商</b><small class="w">簽符合性聲明、扛責任</small></div>
+      <div class="farr">↓ 貨</div>
+      <div class="fbox"><b>歐盟市場</b><small>主管機關會抽查</small></div>
+    </div>
+    <div class="fback"><b>↑ 資料要求往回傳</b>
+      <ol>
+        <li>歐盟市場 → 進口商：抽查，10 天內交出證明</li>
+        <li>進口商 → 台灣客戶：採購合約、供應商問卷</li>
+        <li>台灣客戶 → 龍鑫：<b>第 16 條，交出合規資料</b></li>
+      </ol>
+    </div>
+    <div class="unit">直接接歐盟客戶的單時，中間那格「台灣客戶」就不存在，資料要求會直接找上龍鑫。</div>
+  </div>
+  <div class="grid3" style="margin-top:12px">
+    <div class="box"><h3>情境 A：賣給台灣品牌客戶，由他們出口</h3>台灣客戶用自己的品牌賣進歐盟，他就是<span class="term" data-g="maker">製造商</span>；龍鑫是<span class="term" data-g="supplier">供應商</span>，依第 16 條要交資料給他。</div>
+    <div class="box"><h3>情境 B：直接接歐盟客戶的 OEM 單</h3>歐盟品牌商是製造商，自己簽<span class="term" data-g="doc">符合性聲明</span>；龍鑫一樣是供應商，要交資料。✎ 第 1 版說「這是龍鑫最常見的情境」沒有證據，已拿掉。</div>
+    <div class="box"><h3>情境 C：自有品牌直接賣歐盟消費者</h3>你自己就是製造商兼<span class="term" data-g="epr">生產者</span>：要自己簽符合性聲明、辦登記、在每個銷售國指定<span class="term" data-g="ar">授權代表</span>。龍鑫目前不適用。</div>
+  </div>
+  <div class="unit" style="margin-top:6px">角色是直接依第 3 條的定義套用。SGS 講義的案例「中國工廠做紙箱給美國品牌＝供應商，要提供材質報告、重金屬證明」，就是龍鑫的位置。</div>
+</section>
+
+<!-- ④ -->
+<section id="s4">
+  <div class="tl">第 2 層　先看圖＋第 3 層　互動</div>
+  <h2>④ 時程：哪些已經在管、哪些還沒到</h2>
+  <p class="lead">紅線是今天。點圓點（手機上點項目）看說明。標 <b>⇢</b> 的日期寫著「或細則生效後 N 個月，以較晚者為準」，細則晚出就會往後延。</p>
+  <div class="seg2" id="tlFilter"><button data-f="all" class="on">全部</button><button data-f="box">只看跟紙箱有關</button><button data-f="food">食品箱</button><button data-f="ecom">電商箱</button></div>
+  <div class="tlwrap"><svg class="tlsvg" id="tlsvg" viewBox="0 0 960 250"></svg></div>
+  <div class="tllist" id="tlList"></div>
+  <div id="msInfo" class="box"><span class="unit">👆 點時間軸上的圓點。</span></div>
+</section>
+
+<!-- ⑤ -->
+<section id="s5">
+  <h2>⑤ 對紙箱：好消息與要注意的事</h2>
+  <div class="grid2">
+    <div>
+      <h3 style="color:var(--good);margin:0 0 6px">✓ 好消息</h3>
+      <div class="good"><b>紙箱不用改成可重複使用。</b>運輸包裝的重複使用目標（2030 年 40%、2040 年 70%）明文排除「紙箱」。組合包裝的目標條文也寫「不含紙箱」。壓力在塑膠週轉箱、棧板膜身上。<span class="src">Art.29(4)(d)</span></div>
+      <div class="good"><b>不用證明再生紙比例。</b>強制再生料比例只管塑膠，紙板本體不受管。箱子上的塑膠窗、內襯，<b>占整個包裝重量不到 5% 也免</b>。✎ 但歐盟要在 2032 年前檢討要不要也管紙。<span class="src">第 7 條</span></div>
+      <div class="good"><b>一般運輸箱不用貼材質標示。</b>2028 年起的材質圖示標示，運輸包裝原則上豁免，除非它同時是電商箱。<span class="src">Art.12(1)</span></div>
+      <div class="good"><b>紙本來就是回收資優生。</b>歐洲紙質包裝 2024 年回收率 83.1%，是所有包材中最高的。<span class="src">CEPI 2025-07</span></div>
+    </div>
+    <div>
+      <h3 style="color:var(--warn);margin:0 0 6px">⚠ 要注意</h3>
+      <div class="warn"><b>油墨的重金屬（現在就管）。</b>鉛＋鎘＋汞＋六價鉻加起來不能超過 100 mg/kg，所有包裝都適用。印刷油墨、色料要跟供應商要檢測報告。<span class="src">Art.5(4)</span></div>
+      <div class="warn">✎ <b>交資料給客戶（現在就管）。</b>你是法定供應商，客戶要證明合規需要的資料要交得出來。<span class="src">第 16 條</span></div>
+      <div class="warn">✎ <b>箱子上的批號和品牌商資訊（現在就管）。</b>品牌商的義務，但印的人是你，運輸箱也沒有豁免。<span class="src">第 15 條</span></div>
+      <div class="warn"><b>直接碰食品的箱子：PFAS（現在就管）。</b>單一種超過 25 ppb、加總超過 250 ppb、含高分子的總量超過 50 ppm，就不能上市。只管會碰到食品的包裝。<span class="src">Art.5(5)</span></div>
+      <div class="midb"><b>箱子不能比貨大太多（2030 起）。</b>組合、運輸、電商包裝的空隙最多 50%。<b>塞碎紙、氣泡布、保麗龍粒都算空隙</b>，塞了也沒用。<span class="src">Art.24</span></div>
+      <div class="midb"><b>不能為了看起來大而做厚（2030 起）。</b>只為了讓產品看起來比較多的雙層壁、假底、多餘夾層，禁止上市。<span class="src">Art.10(2)</span></div>
+      <div class="midb"><b>加工會影響回收評等（2030 起）。</b>歐洲瓦楞業界指南點名的扣分項：塑膠含量超過 5%（最好壓在 3% 以下）、整片黏死的防水複合膜、熱熔膠（35°C 以上會造成回收問題）、UV 上光。<span class="src">FEFCO 指南，媒體轉述，原文未核對</span></div>
+      <div class="midb">✎ <b>醫療客戶的外箱不豁免。</b>只有醫療器材「直接碰到產品的包裝」和藥品的直接包裝豁免可回收要求。<span class="src">第 6 條第 11 項</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ -->
+<section id="s6">
+  <div class="tl">第 3 層　互動網頁</div>
+  <h2>⑥ 空隙比試算：箱子可以比貨大多少？</h2>
+  <p class="lead">空隙比＝（外箱容積 − 裡面商品包裝的容積）÷ 外箱容積。2030 年起上限 50%，也就是<b>箱子容積最多是貨的 2 倍</b>。<span class="src">Art.24(1)(3)</span></p>
+  <div class="calc">
+    <div>
+      <div class="unit" style="font-weight:700">外箱內尺寸（mm）</div>
+      <div class="row3"><input type="number" id="bL" value="400" aria-label="外箱長"><input type="number" id="bW" value="300" aria-label="外箱寬"><input type="number" id="bH" value="250" aria-label="外箱高"></div>
+      <div class="unit" style="font-weight:700;margin-top:10px">裡面的商品包裝（每個，mm）</div>
+      <div class="row3"><input type="number" id="pL" value="180" aria-label="商品長"><input type="number" id="pW" value="140" aria-label="商品寬"><input type="number" id="pH" value="200" aria-label="商品高"></div>
+      <div class="field" style="margin-top:10px"><label>裝幾個 <span id="nV">2 個</span></label><input type="range" id="pn" min="1" max="12" value="2"></div>
+      <div class="field"><label>塞多少填充料（碎紙、氣泡布…） <span id="fV">0%</span></label><input type="range" id="fill" min="0" max="100" value="0"></div>
+    </div>
+    <div>
+      <div class="unit">空隙比</div>
+      <div class="big" id="esr">—</div>
+      <div class="meter"><div class="fill" id="esrFill"></div><div class="line" style="left:50%"></div></div>
+      <div class="unit" style="display:flex;justify-content:space-between"><span>0%</span><span>上限 50%</span><span>100%</span></div>
+      <div id="esrMsg" style="margin-top:8px"></div>
+      <div class="boxpic" id="boxPic"></div>
+    </div>
+  </div>
+  <div class="unit">只檢查容積和單個商品放不放得進去，沒有檢查多個商品實際排不排得下。</div>
+  <div class="info"><b>這條管誰？</b>管的是「把貨裝進箱子的人」，通常是你的客戶，不是做箱子的龍鑫。但客戶一旦被要求，就會回頭請你把箱子做小一點、做剛好。<span class="src">Art.24(1)</span></div>
+  <div class="midb"><b>⚠ 示範算法。</b>正式的計算方法 2028/2/12 前才會公布，會另外考慮形狀不規則、易碎品、要留位置貼運輸標籤等狀況，所以實際數字可能跟這裡不同。把商品包裝直接當電商外箱寄出、或屬於重複使用系統的包裝，可以豁免 50% 上限。<span class="src">Art.24(2)(5)</span></div>
+</section>
+
+<!-- ⑦ -->
+<section id="s7">
+  <div class="tl">第 3 層　互動網頁</div>
+  <h2>⑦ 回收評等：加了塑膠膜，箱子會掉到哪一級？</h2>
+  <p class="lead">歐盟把包裝分成 A／B／C 三級，依「可回收的重量比例」分。✎ 法規<b>只有這三級加「不可回收」，沒有 D、E 級</b>（有些網路文章寫 A～E，不對）。<b>2030 年起只能賣 A、B、C 級；2038 年起連 C 級也不能賣。</b><span class="src">Art.6(3)、Annex II Table 3</span></p>
+  <div class="calc">
+    <div>
+      <div class="field"><label>紙板重量 <span>g</span></label><input type="number" id="gPaper" value="450"></div>
+      <div class="field"><label>塑膠膜／淋膜／塑膠窗重量 <span id="gPlV">20 g</span></label><input type="range" id="gPl" min="0" max="250" value="20"></div>
+      <div class="field"><label>其他難回收的部分（金屬扣、難分離複合層） <span id="gOtV">0 g</span></label><input type="range" id="gOt" min="0" max="150" value="0"></div>
+    </div>
+    <div>
+      <div class="unit">可回收比例（示範：只把紙算成可回收）</div>
+      <div class="big" id="recPct">—</div>
+      <div class="grades">
+        <div class="gr A">A<small>≥95%</small></div><div class="gr B">B<small>≥80%</small></div><div class="gr C">C<small>≥70%</small></div><div class="gr X">不可回收<small>&lt;70%</small></div>
+      </div>
+      <div id="recMsg"></div>
+      <div id="plMsg" class="unit" style="margin-top:6px"></div>
+    </div>
+  </div>
+  <div class="midb"><b>⚠ 示範算法。</b>分級門檻（95／80／70%）是法條原文。但<b>紙箱的實際評分方式</b>（哪種淋膜扣多少、塑膠占多少算過關）要等歐盟 2028/1/1 前公布細則，業界正在跟歐盟爭取「非紙成分」的門檻，目前還沒有定案的數字。這裡用重量比例粗看，只是讓你感受方向。<span class="src">可回收性卡</span></div>
+</section>
+
+<!-- ⑧ -->
+<section id="s8" class="ck">
+  <div class="tl">第 3 層　互動網頁</div>
+  <h2>⑧ 歐盟客戶來要資料時，你要準備什麼</h2>
+  <p class="lead">✎ 法源：第 16 條要供應商交出「客戶證明合規需要的全部資料」。具體清單來自經濟部、顧問公司和 SGS 講義的整理，<b>不是法條逐條列舉</b>。（勾選只在這個頁面有效，關掉就清空。）</p>
+  <div class="progress" id="ckProg"></div>
+  <div id="ckList"></div>
+  <div class="info">保存期限：一次性包裝的符合性聲明和技術文件要保存 <b>5 年</b>，重複使用包裝保存 <b>10 年</b>。主管機關抽查時，要在 <b>10 天內</b>交出證明。<span class="src">Art.17、經濟部 2026-03-25</span></div>
+</section>
+
+<!-- ⑨ -->
+<section id="s9">
+  <h2>⑨ 台灣自己的規定：其實已經先管了</h2>
+  <div class="grid2">
+    <div class="box"><h3>網購包裝規定（2023-02-16 發布，已經在管）</h3>
+      <ul style="margin:0;padding-left:1.2em">
+        <li>網購出貨用的<b>瓦楞紙箱、紙板產品、紙漿模製品，回收紙要占 90% 以上</b></li>
+        <li>大型網購業者（資本額 1.5 億以上，或自有取貨點 500 處以上）：2026 年底前包材平均減重 35%，<b>或</b>循環箱使用率 15%，兩個目標達成一個就好</li>
+        <li>網購包材不能用 PVC；塑膠包材要混 25% 以上再生料</li>
+      </ul>
+      <p style="margin:6px 0 0">👉 如果有網購、電商客戶，這條的壓力可能<b>比 PPWR 更早找上門</b>，例如客戶要求更輕的楞型。</p>
+    </div>
+    <div class="box"><h3>環境部「循環標誌」（2026 年新制度）</h3>首波適用類別是塑膠、紡織品、重複裝填玻璃和循環服務，<b>目前不含紙包裝</b>。龍鑫暫時用不到，但類別還在擴大，之後可以再留意。</div>
+    <div class="box"><h3>PFAS 管理行動計畫（環境部，2023 年起）</h3>10 個部會聯合推動。業界文章說有點名造紙業，但<b>官方一手資料沒有查到點名造紙業</b>，卡片只列為業界說法。</div>
+  </div>
+</section>
+
+<!-- ⑩ -->
+<section id="s10">
+  <h2>⑩ 🆕 最新動態（2026-10-06 上網補查，還沒寫進卡片）</h2>
+  <div class="tblwrap"><table>
+    <tr><th>日期</th><th>發生什麼事</th><th>對龍鑫的意思</th></tr>
+    <tr><td>2025-10</td><td>歐盟執委會書面否認延後</td><td>8/12 適用日確定，不要再等「會不會延」</td></tr>
+    <tr><td>2025-12-10</td><td>歐盟提出「環境法規簡化包」，包括減少包裝廢棄物的申報負擔</td><td><b>到 2026 年 9 月都還沒通過</b>，目前仍照原法規走</td></tr>
+    <tr><td>2026-06-10</td><td>歐盟發布正式指引文件 C/2026/3084</td><td>是官方解釋，不是新規定</td></tr>
+    <tr><td>2026-08-03</td><td>問答集改版（取代 3/30 第一版），補充進口貨物的運輸包裝、重複使用目標的適用對象等</td><td>運輸包裝的部分跟出口廠有關，<b>原文還沒細讀</b>〔待查證〕</td></tr>
+    <tr><td>2026-09-29</td><td>參加 SGS 台灣 PPWR 課程（講師 Tony）</td><td>講義逐項回法規原文核對後，修正了知識庫 4 張卡，見 ⑪</td></tr>
+    <tr><td>2026-09-30</td><td>歐洲中小企業聯盟要求<b>暫停「授權代表」規定</b>：業界報導每國授權代表約 200–800 歐元、每國登記超過 500 歐元。德國環境部提案：一年包裝量少於 10 噸的業者豁免</td><td>只影響情境 C（自有品牌直賣歐盟）。如果將來想直接外銷，這筆費用要算進去，也要注意規定會不會改</td></tr>
+    <tr><td>2026 Q4（預估）</td><td>材質標示的實施細則延誤，原本應該更早公布</td><td>電商箱貼標日期「2028/8/12 或細則生效後 24 個月，以較晚者為準」，<b>很可能往後延</b></td></tr>
+  </table></div>
+  <div class="unit" style="margin-top:6px">這些消息來自法律事務所、業界媒體和顧問網站的二手整理，正式寫進卡片前要對照歐盟原文。</div>
+</section>
+
+<!-- SGS 對照 -->
+<section id="s15">
+  <div class="tl">✎ 第 2 版新增</div>
+  <h2>⑪ SGS 講義對照：講對的、要小心的</h2>
+  <p class="lead">講義 46 頁，2026-09-29 上課。每一項都回歐盟法規原文核對過。<b>整體很紮實，而且抓到我們卡片的錯</b>；但有幾處簡化過頭，套到龍鑫身上會誤判。</p>
+  <div class="seg2" id="sgsSeg"><button data-k="all" class="on">全部</button><button data-k="ok">講義對、我們錯</button><button data-k="new">講義有、我們沒有</button><button data-k="warn">講義要小心</button></div>
+  <div class="tblwrap"><table id="sgsTbl"></table></div>
+</section>
+
+<!-- ⑪ -->
+<section id="s11">
+  <h2>⑫ 常見誤會（點開看答案）</h2>
+  <div class="myths">
+    <button class="myth"><div class="q2">PPWR 延後了，可以先不管？</div><div class="a">沒有延後。2026/8/12 已經開始適用，歐盟也書面否認過延後。延後的只有「還沒公布細則」的項目。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">龍鑫在台灣，歐盟法管不到我？</div><div class="a">✎ 第 1 版這題答錯了。法規明文把「供應商」列為受管業者，第 16 條要你交資料給客戶。歐盟政府很難直接來台灣執法，實務上是客戶用合約要求；但這是法律義務，不只是客戶的要求。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">龍鑫只有 18 人，算微型企業，要扛製造商責任？</div><div class="a">不會。微型企業是<b>少於 10 人</b>（講義寫 20 人，原文不是）。而且這條是「<b>品牌商</b>規模小時，責任轉給<b>歐盟境內</b>的供應商」，台灣供應商不適用。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">醫療客戶的紙箱，可回收要求都豁免？</div><div class="a">不是。只豁免醫療器材「直接碰到產品的包裝」和藥品的直接包裝。一般運輸外箱、彩盒照樣要符合。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">瓦楞箱印 PAP 21？</div><div class="a">瓦楞紙板是 <b>PAP 20</b>；PAP 21 是紙盒類，PAP 22 是紙。這套舊代碼在歐盟層級是自願使用，2028 年廢止。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">歐盟要求紙箱含多少再生紙？</div><div class="a">沒有。強制再生料比例只管塑膠零件。要求回收紙 90% 的是<b>台灣網購包裝規定</b>，兩件事別搞混。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">客戶要我簽「不含 PFAS」，就照簽？</div><div class="a">先問清楚是哪一條。PFAS 限值只管會碰到食品的包裝；一般運輸箱應該依重金屬那條（100 mg/kg）處理。籠統簽一張，等於把不必扛的責任攬到自己身上。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">箱子太大，多塞緩衝材料就合規？</div><div class="a">不行。碎紙、氣泡布、保麗龍粒都算空隙，唯一的辦法是把箱子做到剛好。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">用可生物分解的淋膜，回收比較沒問題？</div><div class="a">不一定。歐洲瓦楞業界指南寫明，<b>就算是可生物分解塑膠也應避免</b>，因為一樣會干擾紙的回收。（指南原文未核對）</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">符合 FEFCO 指南，就等於符合 PPWR？</div><div class="a">不等於。FEFCO 指南是業界的自律建議，PPWR 的正式評分方式要等 2028 年前公布的細則。</div><div class="hint">點我</div></button>
+    <button class="myth"><div class="q2">每個紙箱都要印回收圖示？</div><div class="a">一般運輸箱原則上豁免。電商箱（直接寄給消費者）才要貼，最早 2028/8/12，而且很可能延後。</div><div class="hint">點我</div></button>
+  </div>
+</section>
+
+<!-- ⑫ -->
+<section id="s12">
+  <h2>⑬ 還不知道的事（卡片誠實列出的缺口）</h2>
+  <div class="grid2">
+    <div class="box"><h3>細則還沒出</h3><ul style="margin:0;padding-left:1.2em"><li>紙箱怎麼評回收等級（2028/1/1 前）</li><li>空隙比怎麼算（2028/2/12 前）</li><li>材質標示的圖示長什麼樣子（延誤中）</li><li>2030 年起禁止的包裝形式清單有沒有涉及紙箱（Annex V 未逐項核對）</li></ul></div>
+    <div class="box"><h3>還沒拿到原文</h3><ul style="margin:0;padding-left:1.2em"><li>歐盟正式指引、8 月問答集的全文</li><li>FEFCO 回收指南原文（5%、3%、35°C 等數字是媒體轉述）</li><li>技術文件（附件 VII）、符合性聲明格式（附件 VIII）的逐條核對</li><li>✎ 已解決：角色定義、第 16 條供應商義務已回原文核對</li><li>龍鑫目前出口相關的訂單比較常落在哪一種情境（龍鑫待確認）</li></ul></div>
+  </div>
+</section>
+
+<!-- 第 4 層 -->
+<section>
+  <div class="tl">第 4 層　解說影片（只有分鏡，沒有實際製作）</div>
+  <h2>如果要拍成 90 秒影片</h2>
+  <div class="tblwrap"><table>
+    <tr><th>秒數</th><th>畫面</th><th>旁白</th></tr>
+    <tr><td>0–10</td><td>龍鑫的紙箱裝上貨櫃，地圖一路飛到歐洲港口</td><td>「台灣做的紙箱，到了歐洲要守誰的規矩？」</td></tr>
+    <tr><td>10–25</td><td>歐盟海關前，進口商拿著一疊文件，畫面跳出「責任」兩個字蓋在他身上</td><td>「扛法律責任的是歐盟進口商，不是你。」</td></tr>
+    <tr><td>25–40</td><td>進口商打電話，電話線一路拉回台灣，龍鑫辦公室電話響起：「材料資料給我」</td><td>「但他會回頭跟你要資料。」</td></tr>
+    <tr><td>40–55</td><td>三個綠色勾勾依序跳出：重複使用✓、再生紙比例✓、貼標✓</td><td>「好消息是，對紙箱的要求大多比塑膠寬鬆。」</td></tr>
+    <tr><td>55–75</td><td>四個黃色警示依序亮起：油墨、食品、空隙、淋膜；一個大箱子塞滿氣泡布，被打上叉</td><td>「要注意的只有四件，而且塞填充料不算數。」</td></tr>
+    <tr><td>75–90</td><td>資料夾一格一格被填滿，標題「每款箱子的材料資料」</td><td>「細則還在路上，現在先把資料備齊。」</td></tr>
+  </table></div>
+</section>
+
+<!-- 名詞 -->
+<section id="s13">
+  <h2>名詞小抄</h2>
+  <div class="tblwrap"><table id="glossTbl"></table></div>
+</section>
+
+<!-- 來源 -->
+<section id="s14">
+  <h2>來源</h2>
+  <p class="unit" style="margin:0 0 6px"><b>卡片來源（2026-09-16 查證）</b></p>
+  <ol class="srcs">
+    <li>Regulation (EU) 2025/40 官方公報全文（Art.1、2、5、6、7、10、12、15、17–19、24、29、70、71、Annex II）— https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:L_202500040</li>
+    <li>EUR-Lex 摘要頁 — https://eur-lex.europa.eu/EN/legal-content/summary/packaging-and-packaging-waste-from-2026.html</li>
+    <li>國貿署轉載：歐盟 PPWR 規章指引及常見問答（2026-03-30）— https://www.trade.gov.tw/Pages/Detail.aspx?nodeID=45&amp;pid=813427</li>
+    <li>經濟部中小及新創企業署：歐盟 PPWR 法規對我國中小企業之影響與因應策略（2026-03-25）— https://www.sme.gov.tw/caas/article-caas-3010-20720</li>
+    <li>台經院王偉鴻：歐盟 PPWR 重洗供應鏈（塑膠包裝業）— https://startup.sme.gov.tw/sitaiwan/Home/citizensSay/view/4148</li>
+    <li>CEPI：2024 歐洲紙類回收率新聞稿（2025-07-11）— https://www.cepi.org/press-release-european-paper-recycling-council-reports-strong-recycling-rates-for-2024/</li>
+    <li>Packaging Europe：FEFCO 瓦楞包裝可回收性指南（媒體轉述）— https://packagingeurope.com/news/corrugated-packaging-recyclability-guidelines-launched-by-fefco/7573.article</li>
+    <li>Fibre Packaging Europe 聲明（2026-07-14）— https://www.cepi.org/wp-content/uploads/2026/09/Fibre-Packaging-Europe-Statement-on-Design-for-Recycling-PPWR.pdf</li>
+    <li>台灣《網際網路購物包裝限制使用對象及實施方式》（2023-02-16）、環境部循環標誌、PFAS 行動計畫 — 見〈PPWR台灣官方因應與本土包裝法規動向〉卡</li>
+  </ol>
+  <p class="unit" style="margin:10px 0 6px"><b>✎ 第 2 版核對依據（2026-10-06）</b></p>
+  <ol class="srcs">
+    <li>Regulation (EU) 2025/40 HTML 全文：第 3 條第 1 項第 12、13、16、39 款，第 6(11)、7(5)(15)、12(12)、15、16、21、68、70(2)、71 條 — https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500040</li>
+    <li>Commission Recommendation 2003/361/EC 附件第 2 條（微型企業＜10 人）— https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32003H0361</li>
+    <li>Commission Decision 97/129/EC 第 3 條（材質代碼自願使用）— https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:31997D0129</li>
+    <li>GWP：PAP 20 recycling symbol（交叉確認瓦楞＝PAP 20）— https://www.gwp.co.uk/guides/pap-20-logo/</li>
+    <li>SGS 台灣〈歐盟包材 PPW(R) (EU)2025/40〉課程講義，講師 Tony，2026-09-29（使用者提供，未公開）</li>
+  </ol>
+  <p class="unit" style="margin:10px 0 6px"><b>🆕 2026-10-06 補查（二手整理，未進卡片）</b></p>
+  <ol class="srcs">
+    <li>Packa：PPWR Postponement Fact-Check（2026-07）— https://contenthub.packa.com/ppwr-postponement-fact-check-2026</li>
+    <li>Packaging Europe：SMEs ask EU to suspend and simplify PPWR's authorized representative rules（2026-09-30）— https://packagingeurope.com/news/smes-ask-eu-to-suspend-and-simplify-ppwrs-authorized-representative-rules/14789.article</li>
+    <li>Latham &amp; Watkins：PPWR summary of provisions and new guidance — https://www.lw.com/en/insights/european-packaging-and-packaging-waste-regulation-summary-of-provisions-and-new-guidance</li>
+    <li>White &amp; Case：Further practical guidance by new EU Commission FAQs（2026-08）— https://www.whitecase.com/insight-alert/application-packaging-and-packaging-waste-regulation-ppwr-further-practical-guidance</li>
+    <li>歐盟指引 C/2026/3084 — https://eur-lex.europa.eu/eli/C/2026/3084/oj/eng</li>
+  </ol>
+</section>
+<div class="foot">示範品第 2 版（內容整理 2026-10-06）｜手機版 2026-10-13｜知識庫 PPWR 卡已同步修正｜不是法律意見，實際接單請以客戶要求和歐盟原文為準</div>
+</div>
+
+<div id="gloss" role="dialog"><span class="x" id="glossX">✕</span><div id="glossBody"></div></div>
+
+<script id="logic">
+// 判斷器規則與試算，獨立出來方便自測。所有結論對應 PPWR 卡片條文。
+function verdictItems(a){
+  // a: { eu:'y'|'n'|'?', role:'tw'|'eu'|'own', ecom:'y'|'n', food:'y'|'n', med:'y'|'n', proc:[...], fill:'y'|'n' }
+  var out = [];
+  if (!a.eu) return out;
+  if (a.eu === "n") {
+    out.push({ t: "na", h: "PPWR 不管這張單", b: "貨不會進歐盟，PPWR 跟這張單無關。" });
+    if (a.ecom === "y") out.push({ t: "tw", h: "但台灣網購規定要注意", b: "網購出貨用的瓦楞箱，回收紙要占 90% 以上（2023 年起已經在管）。" });
+    return out;
+  }
+  if (a.eu === "?") out.push({ t: "later", h: "先問客戶：貨會不會到歐盟？", b: "下面先假設「會」來列。如果確定不會，PPWR 就不用管。" });
+  if (a.role === "tw") out.push({ t: "now", h: "你的角色：法定「供應商」（第 16 條）", b: "以自己品牌出口的台灣客戶是製造商。你不用簽符合性聲明，但要把客戶證明合規需要的資料交給他：材料、重量、紙廠、檢測報告。" });
+  if (a.role === "eu") out.push({ t: "now", h: "你的角色：法定「供應商」（第 16 條）", b: "歐盟品牌客戶是製造商，由他簽符合性聲明。你要交出每款箱子的材料、重量、紙廠、檢測報告。" });
+  if (a.role === "own") out.push({ t: "now", h: "你的角色：製造商兼生產者（責任最重）", b: "自己簽符合性聲明、備技術文件、在每個銷售國辦登記並指定授權代表（業界報導每國 200–800 歐元）。中小企業正在爭取暫停這條，要持續注意。" });
+  if (!a.role) return out;
+  out.push({ t: "now", h: "油墨重金屬：現在就管", b: "鉛＋鎘＋汞＋六價鉻加總 ≤ 100 mg/kg。跟油墨、色料供應商要檢測報告（常用檢測方法：IEC 62321）。" });
+  out.push({ t: "now", h: "批號與品牌商資訊：現在就管", b: "品牌商要在包裝上印型號或批號，加上公司名稱、地址（可改用 QR code 或隨附文件）。運輸箱沒有豁免。" +
+    (a.role === "own" ? "這張單你就是品牌商，要印自己的資訊；歐盟進口商也要在包裝上標他自己的名稱和地址（第 18 條）。" : "客戶可能請你幫忙印，龍鑫的製造單號可以拿來當批號。") });
+  if (a.food === "y") out.push({ t: "now", h: "PFAS：現在就管（會碰食品）", b: "單一 PFAS < 25 ppb、加總 < 250 ppb、含高分子總量 < 50 ppm。防水、防油處理要特別查。檢驗實驗室目前排隊 8–14 週（業界報導）。" });
+  if (a.food === "n") out.push({ t: "na", h: "PFAS 限值：這張單不適用", b: "只管食品接觸包裝。客戶要你簽「不含 PFAS」時，先講清楚依哪一條。" });
+  if (a.med === "y") out.push({ t: "later", h: "醫療客戶：一般外箱不豁免", b: "可回收要求只豁免醫療器材「直接碰到產品的包裝」和藥品的直接包裝。運輸外箱、彩盒照樣要符合 2030 年的回收評等。有講義簡寫成「醫療相關不適用」，容易誤會。" });
+  if (a.ecom === "y") {
+    out.push({ t: "later", h: "材質標示：2028/8/12 起（很可能延後）", b: "電商箱要印歐盟統一的材質圖示，圖示樣式還沒公布。" });
+    out.push({ t: "later", h: "空隙比 50%：2030 起", b: "管的是裝貨的客戶，但客戶會要你把箱子做剛好。" });
+  }
+  if (a.ecom === "n") out.push({ t: "ok", h: "材質標示：運輸箱豁免", b: "不會直接寄給消費者的運輸箱，原則上不用貼材質標示。" });
+  if (a.fill === "y") out.push({ t: "later", h: "箱子太大、靠填充料撐：2030 起有風險", b: "填充料算空隙；只為了看起來大的雙層壁、假底也禁止。可以先跟客戶談縮小尺寸。" });
+  var P = { film: "防水淋膜／塑膠膜", uv: "UV 上光", hot: "熱熔膠", win: "塑膠窗／塑膠內襯" };
+  var picked = (a.proc || []).filter(function(k){ return P[k]; });
+  if (picked.length) {
+    var t = picked.map(function(k){ return P[k]; }).join("、");
+    var extra = picked.indexOf("win") >= 0 ? "塑膠窗／內襯：如果塑膠占整個包裝重量 5% 以上，2030 年起那塊塑膠還要符合再生料比例；不到 5% 就免（第 7 條）。" : "";
+    out.push({ t: "later", h: "加工可能扣回收評等：2030 起", b: t + " 都是歐洲瓦楞業界指南點名的扣分項。2030 年起只能賣 A／B／C 級，2038 年起只剩 A／B 級。正式評分方式 2028 年前才公布。" + extra });
+  } else if (a.proc && a.proc.indexOf("none") >= 0) {
+    out.push({ t: "ok", h: "沒有特殊加工：回收評等風險低", b: "一般瓦楞箱本來就是回收資優生。" });
+  }
+  if (a.role === "tw" || a.role === "eu") out.push({ t: "na", h: "微型企業條款：不會轉到你身上", b: "品牌商員工少於 10 人時，責任會轉給供應商，但只限歐盟境內的供應商。" });
+  out.push({ t: "ok", h: "這些不用擔心", b: "紙箱不用改成可重複使用（第 29 條明文排除）；不用證明再生紙比例（只管塑膠，2032 年前歐盟會檢討紙類）。" });
+  return out;
+}
+function emptySpace(bL, bW, bH, pL, pW, pH, n){
+  var bv = bL * bW * bH, pv = pL * pW * pH * n;
+  if (!(bv > 0) || !(pv > 0)) return null;
+  var b = [bL, bW, bH].sort(function(x, y){ return x - y; }), p = [pL, pW, pH].sort(function(x, y){ return x - y; });
+  var oneFits = p[0] <= b[0] && p[1] <= b[1] && p[2] <= b[2];
+  return { boxV: bv, prodV: pv, ratio: Math.max(0, (bv - pv) / bv), fits: pv <= bv && oneFits, oneFits: oneFits };
+}
+function grade(pct){ return pct >= 95 ? "A" : pct >= 80 ? "B" : pct >= 70 ? "C" : "X"; }
+if (typeof module !== "undefined") module.exports = { verdictItems: verdictItems, emptySpace: emptySpace, grade: grade };
+</script>
+
+<script>
+function $(id){ return document.getElementById(id); }
+function each(sel, fn, root){ Array.prototype.forEach.call((root || document).querySelectorAll(sel), fn); }
+function fmt(n, d){ return n.toLocaleString("zh-TW", { maximumFractionDigits: d || 0 }); }
+// 手機版把表格拆成卡片時，每格前面要顯示欄名；表格重畫後要再呼叫一次
+function labelTables(){
+  each(".tblwrap table", function(t){
+    var rows = t.querySelectorAll("tr"); if (!rows.length) return;
+    var heads = Array.prototype.map.call(rows[0].querySelectorAll("th"), function(th){ return th.textContent; });
+    if (!heads.length) return;
+    rows[0].classList.add("hd");
+    Array.prototype.forEach.call(rows, function(r){
+      Array.prototype.forEach.call(r.querySelectorAll("td"), function(td, i){ if (heads[i]) td.setAttribute("data-label", heads[i]); });
+    });
+  });
+}
+
+/* ---------- 名詞 ---------- */
+var GLOSS = {
+  supplier: ["供應商（supplier）", "把包裝或包裝材料提供給「製造商」的人（第 3 條）。替品牌商做紙箱的紙箱廠就是這個角色。第 16 條規定：要把製造商證明合規所需的全部資料和文件交給他。供應商也屬於法規說的「經濟營運者」。"],
+  maker: ["製造商（manufacturer）", "不是實際做包裝的工廠，而是「用自己的名稱或商標設計、或委託製造包裝的人」（第 3 條），通常是下單的品牌商。他要簽符合性聲明、保存技術文件、在包裝上印批號和公司資訊。"],
+  micro: ["微型企業", "員工少於 10 人，且年營業額或資產不超過 200 萬歐元（歐盟建議書 2003/361/EC）。品牌商是微型企業時，責任會轉給「歐盟境內」的供應商；台灣的供應商不適用。"],
+  importer: ["進口商", "把台灣（歐盟以外）做的包裝或商品，第一次帶進歐盟市場的歐盟公司。他要確認製造商已經做好合規，並保管文件給政府查。"],
+  doc: ["符合性聲明（DoC）", "一份由業者自己簽的聲明書：「這款包裝符合 PPWR」。每一種包裝都要有一份，還要附上技術文件（設計圖、材料、測試報告、空隙計算等）。"],
+  ar: ["授權代表", "歐盟以外的公司如果要用自己的名義直接在歐盟賣，要在每個銷售國找一個代表，幫忙保管文件、應付政府詢問。只是行政窗口，責任不會轉給他。"],
+  epr: ["生產者（延伸生產者責任 EPR）", "「最後把包裝放上市場的人」要付包裝廢棄物的回收處理費。跨境銷售時，通常是歐盟的品牌商或電商平台。"],
+  transport: ["運輸包裝", "為了搬運、運送而用的包裝，例如外箱。不是賣給消費者時看到的那一層。"],
+  sales: ["銷售包裝", "消費者在店裡拿到的那一層，例如商品的彩盒。"],
+  grouped: ["組合包裝", "把好幾個銷售包裝綁成一組方便存放、配送的包裝。"],
+  esr: ["空隙比", "外箱裡沒被商品包裝佔到的空間比例。填充料佔的空間也算空隙。"],
+  pfas: ["PFAS", "一大類含氟化學物質，常用在防水、防油處理，很難分解，被稱為「永久化學物質」。"],
+  reg: ["規則（Regulation）vs 指令（Directive）", "「指令」要各國自己立法才生效；「規則」一公布就直接對 27 國生效。PPWR 是規則。"]
+};
+function showGloss(k){
+  var g = GLOSS[k]; if (!g) return;
+  $("glossBody").innerHTML = "<b>" + g[0] + "</b><br>" + g[1];
+  $("gloss").style.display = "block";
+}
+$("glossX").addEventListener("click", function(){ $("gloss").style.display = "none"; });
+document.addEventListener("click", function(e){
+  var t = e.target.closest && e.target.closest(".term");
+  if (t) { showGloss(t.getAttribute("data-g")); e.stopPropagation(); }
+});
+var gt = "<tr><th>名詞</th><th>白話</th></tr>";
+Object.keys(GLOSS).forEach(function(k){ gt += "<tr><td><b>" + GLOSS[k][0] + "</b></td><td>" + GLOSS[k][1] + "</td></tr>"; });
+$("glossTbl").innerHTML = gt;
+
+/* ---------- ② 判斷器 ---------- */
+var QS = [
+  { k: "eu", t: "1. 這批箱子（或用它裝的貨）最後會賣到歐盟嗎？", o: [["y","會"],["n","不會"],["?","不確定"]] },
+  { k: "role", t: "2. 這張單的客戶是誰？", o: [["tw","台灣客戶／貿易商，他們再出口"],["eu","直接接歐盟客戶的單"],["own","我們自己的品牌，直接賣歐盟消費者"]], need: function(a){ return a.eu && a.eu !== "n"; } },
+  { k: "ecom", t: "3. 箱子會直接寄到消費者手上嗎（電商箱）？", o: [["y","會"],["n","不會，是企業之間的運輸箱"]], need: function(a){ return a.eu === "n" || !!a.role; } },
+  { k: "food", t: "4. 箱子會直接碰到食品嗎？", h: "例如生鮮蔬果箱、麵包紙箱、直接裝食品的內襯", o: [["y","會"],["n","不會"]], need: function(a){ return a.eu !== "n" && !!a.ecom; } },
+  { k: "med", t: "5. 客戶是醫療器材或藥品業嗎？", o: [["y","是"],["n","不是"]], need: function(a){ return a.eu !== "n" && !!a.food; } },
+  { k: "proc", t: "6. 有沒有特殊加工？（可複選）", multi: true, o: [["film","防水淋膜／塑膠膜"],["uv","UV 上光"],["hot","熱熔膠"],["win","塑膠窗／塑膠內襯"],["none","都沒有"]], need: function(a){ return a.eu !== "n" && !!a.med; } },
+  { k: "fill", t: "7. 箱子常比貨大很多、要塞填充料嗎？", o: [["y","常常"],["n","大致剛好"]], need: function(a){ return a.eu !== "n" && a.proc && a.proc.length > 0; } }
+];
+var ans = {};
+function renderQuiz(){
+  var h = "";
+  QS.forEach(function(q, i){
+    var on = !q.need || q.need(ans);
+    h += '<div class="q' + (on ? "" : " off") + '" data-k="' + q.k + '"><div class="qt">' + q.t + '</div>' + (q.h ? '<div class="qh">' + q.h + '</div>' : "") + '<div class="opts">';
+    q.o.forEach(function(o){
+      var sel = q.multi ? (ans[q.k] || []).indexOf(o[0]) >= 0 : ans[q.k] === o[0];
+      h += '<button class="opt' + (sel ? " on" : "") + '" data-v="' + o[0] + '">' + o[1] + '</button>';
+    });
+    h += "</div></div>";
+  });
+  h += '<button class="opt" id="qReset" style="margin-top:4px">↺ 重新回答</button>';
+  $("quiz").innerHTML = h;
+  each(".q", function(qd){
+    var k = qd.getAttribute("data-k"), q = QS.filter(function(x){ return x.k === k; })[0];
+    each(".opt", function(b){
+      b.addEventListener("click", function(){
+        var v = b.getAttribute("data-v");
+        if (q.multi) {
+          var cur = (ans[k] || []).slice();
+          if (v === "none") cur = ["none"];
+          else { cur = cur.filter(function(x){ return x !== "none"; }); var i = cur.indexOf(v); if (i >= 0) cur.splice(i, 1); else cur.push(v); }
+          ans[k] = cur;
+        } else ans[k] = v;
+        // 前面的答案改了，後面不再適用的題目要清掉
+        QS.forEach(function(x){ if (x.need && !x.need(ans)) delete ans[x.k]; });
+        renderQuiz(); renderVerdict();
+      });
+    }, qd);
+  });
+  $("qReset").addEventListener("click", function(){ ans = {}; renderQuiz(); renderVerdict(); });
+}
+var TAGTXT = { now: "現在就管", later: "之後才管", ok: "沒問題", na: "不適用", tw: "台灣法規" };
+function renderVerdict(){
+  var items = verdictItems(ans);
+  if (!items.length) { $("verdict").innerHTML = '<div class="unit">先回答左邊第 1 題。</div>'; return; }
+  var bg = { now: "var(--warn-bg)", later: "var(--mid-bg)", ok: "var(--good-bg)", na: "var(--soft)", tw: "var(--eu-soft)" };
+  $("verdict").innerHTML = items.map(function(it){
+    return '<div class="item" style="background:' + bg[it.t] + '"><h4><span class="tag ' + it.t + '">' + TAGTXT[it.t] + "</span>" + it.h + "</h4>" + it.b + "</div>";
+  }).join("");
+}
+renderQuiz();
+
+/* ---------- ④ 時程 ---------- */
+var MS = [
+  { d: "2023-02-16", lv: -1, y: 2023.12, lab: "台灣網購規定", tags: ["box","ecom"], tw: true, txt: "台灣《網際網路購物包裝限制使用對象及實施方式》發布：網購瓦楞箱回收紙 90% 以上。" },
+  { d: "2025-02-11", lv: 1, y: 2025.11, lab: "PPWR 生效", tags: ["box"], txt: "法規生效（公布後第 20 天），但還沒開始適用。" },
+  { d: "2026-08-12", lv: -2, an: "end", y: 2026.61, lab: "全面適用", tags: ["box","food","ecom"], txt: "全面適用，取代舊包裝指令 94/62/EC。<b>符合性聲明、技術文件、重金屬 100 mg/kg、食品包裝 PFAS 限值、包裝上的批號與品牌商資訊（第 15 條）、供應商交資料義務（第 16 條）</b>同一天上路。" },
+  { d: "2026-12-31", lv: 2, an: "start", y: 2026.99, lab: "關切物質報告", tags: [], txt: "執委會會同歐洲化學總署提出「關切物質」清單報告，作為以後訂限制的依據。" },
+  { d: "2027-02-12", lv: 3, an: "start", y: 2027.12, lab: "各國罰則", tags: ["box"], txt: "各會員國要訂好違規罰則；違反空隙比、重複使用等規定（第 24～29 條）要有行政罰鍰（第 68 條）。" },
+  { d: "2028-01-01", lv: -1, y: 2028.0, lab: "回收評分細則", tags: ["box"], txt: "歐盟應公布各類包裝（含紙）的回收設計標準和分級算法。業界正在爭取「非紙成分」門檻。" },
+  { d: "2028-02-12", lv: 1, y: 2028.12, lab: "空隙比算法", tags: ["box","ecom"], txt: "空隙比計算方法應公布；銷售包裝的空隙要減到最低。" },
+  { d: "2028-08-12", lv: -3, y: 2028.61, lab: "材質標示⇢", late: true, tags: ["ecom"], txt: "材質圖示標示上路，<b>或細則生效後 24 個月，以較晚者為準</b>。運輸箱豁免，電商箱要貼。🆕 細則延誤中，很可能延後。上路前已進入歐盟的包裝可再賣 3 年。舊材質代碼（瓦楞＝PAP 20）同一天廢止。" },
+  { d: "2029-02-12", lv: 3, y: 2029.12, lab: "重複使用標示⇢", late: true, tags: [], txt: "重複使用包裝要標「可重複使用」。紙箱不在重複使用目標內，一般用不到。" },
+  { d: "2030-01-01", lv: -2, y: 2030.0, lab: "2030 大關⇢", late: true, tags: ["box","ecom"], txt: "同一天上路：<b>只能賣 A／B／C 級</b>；包裝減量（禁雙層壁、假底）；<b>空隙比 50%</b>；塑膠零件再生料比例；重複使用目標第一階段（紙箱排除）；特定包裝形式禁止上市。部分項目寫著「以較晚者為準」。" },
+  { d: "2032-02-12", lv: 1, y: 2032.12, lab: "檢討空隙比", tags: ["ecom"], txt: "執委會檢討 50% 空隙比規則和豁免範圍；✎ 也要檢討是否對紙等非塑膠包材訂再生料目標（第 7 條第 15 項）。" },
+  { d: "2035-01-01", lv: -1, y: 2035.0, lab: "規模化回收⇢", late: true, tags: ["box"], txt: "包裝不只要設計成可回收，還要「實際上有大規模回收」。" },
+  { d: "2038-01-01", lv: 1, y: 2038.0, lab: "C 級出局", tags: ["box"], txt: "<b>只剩 A、B 級可以賣</b>，C 級禁止上市。" },
+  { d: "2040-01-01", lv: -1, an: "end", y: 2040.0, lab: "重複使用二階", tags: [], txt: "重複使用目標第二階段（紙箱排除）。" }
+];
+// 公開網頁會被隔很久才打開，「今天」照瀏覽當天算，已過／未到的顏色才不會停在整理那天
+var NOW = new Date();
+var TODAY = NOW.getFullYear() + (NOW - new Date(NOW.getFullYear(), 0, 1)) / 864e5 / 365.25;
+var TODAY_TXT = NOW.getFullYear() + "-" + ("0" + (NOW.getMonth() + 1)).slice(-2) + "-" + ("0" + NOW.getDate()).slice(-2);
+var tlF = "all", tlSel = -1;
+function tlColor(m){ return m.tw ? "var(--eu)" : m.y <= TODAY ? "var(--today)" : m.tags.indexOf("box") >= 0 ? "var(--mid)" : "var(--muted)"; }
+function tlStatus(m){ return (m.y <= TODAY ? '<span class="tag now">已經開始</span>' : '<span class="tag later">還沒到</span>') + (m.tw ? ' <span class="tag tw">台灣法規</span>' : ""); }
+// 手機版：同一份 MS 畫成直式清單，點一下就地展開說明
+function drawTLList(){
+  var h = "", todayDone = false;
+  MS.forEach(function(m, i){
+    if (!todayDone && m.y > TODAY) { h += '<div class="tltoday">今天 ' + TODAY_TXT + '</div>'; todayDone = true; }
+    var dim = tlF !== "all" && m.tags.indexOf(tlF) < 0;
+    h += '<button class="tli' + (dim ? " dim" : "") + (tlSel === i ? " on" : "") + '" data-i="' + i + '">' +
+      '<span class="dot" style="background:' + tlColor(m) + '"></span>' +
+      '<span class="tld">' + m.d + (m.late ? "（或更晚）" : "") + '</span>' +
+      '<b>' + m.lab.replace("⇢", "") + '</b> ' + tlStatus(m) +
+      '<span class="tlx">' + m.txt + '</span></button>';
+  });
+  if (!todayDone) h += '<div class="tltoday">今天 ' + TODAY_TXT + '</div>';
+  $("tlList").innerHTML = h;
+  each(".tli", function(b){
+    b.addEventListener("click", function(){
+      var i = +b.getAttribute("data-i");
+      tlSel = tlSel === i ? -1 : i;
+      drawTL();
+    });
+  }, $("tlList"));
+}
+function drawTL(){
+  var x0 = 40, x1 = 930, Y0 = 2023, Y1 = 2040.5, axisY = 130;
+  function X(y){ return x0 + (y - Y0) / (Y1 - Y0) * (x1 - x0); }
+  var s = '<line x1="' + x0 + '" x2="' + x1 + '" y1="' + axisY + '" y2="' + axisY + '" stroke="var(--muted)" stroke-width="2"/>';
+  for (var y = 2023; y <= 2040; y++) {
+    var big = y % 5 === 0 || y === 2023;
+    s += '<line x1="' + X(y) + '" x2="' + X(y) + '" y1="' + (axisY - (big ? 6 : 3)) + '" y2="' + (axisY + (big ? 6 : 3)) + '" stroke="var(--muted)"/>';
+    if (big || y === 2038) s += '<text x="' + X(y) + '" y="' + (axisY + 22) + '" text-anchor="middle" font-size="12" fill="var(--muted)">' + y + '</text>';
+  }
+  s += '<rect x="' + x0 + '" y="' + (axisY - 3) + '" width="' + (X(TODAY) - x0) + '" height="6" fill="var(--today)" opacity=".35"/>';
+  s += '<line x1="' + X(TODAY) + '" x2="' + X(TODAY) + '" y1="20" y2="235" stroke="var(--today)" stroke-width="2"/><text x="' + (X(TODAY) + 4) + '" y="16" font-size="12" font-weight="700" fill="var(--today)">今天 ' + TODAY_TXT + '</text>';
+  MS.forEach(function(m, i){
+    // 2026～2030 很擠，標籤高低由每筆的 lv 指定（負＝軸上方、正＝軸下方）
+    var up = m.lv < 0, ly = up ? axisY - 22 - (-m.lv - 1) * 28 : axisY + 46 + (m.lv - 1) * 28;
+    var dim = tlF !== "all" && m.tags.indexOf(tlF) < 0;
+    var col = tlColor(m);
+    s += '<g class="ms' + (dim ? " dim" : "") + (tlSel === i ? " on" : "") + '" data-i="' + i + '">';
+    s += '<line x1="' + X(m.y) + '" x2="' + X(m.y) + '" y1="' + axisY + '" y2="' + (up ? ly + 4 : ly - 14) + '" stroke="' + col + '" stroke-dasharray="' + (m.late ? "3 3" : "0") + '"/>';
+    s += '<circle cx="' + X(m.y) + '" cy="' + axisY + '" r="8" fill="' + col + '"/>';
+    s += '<text x="' + (X(m.y) + (m.an === "start" ? -4 : m.an === "end" ? -6 : 0)) + '" y="' + ly + '" text-anchor="' + (m.an || "middle") + '">' + m.lab + '</text>';
+    s += '<rect x="' + (X(m.y) - 40) + '" y="' + Math.min(ly - 16, axisY - 10) + '" width="80" height="' + (Math.abs(ly - axisY) + 26) + '" fill="transparent"/>';
+    s += "</g>";
+  });
+  $("tlsvg").innerHTML = s;
+  each(".ms", function(g){
+    g.addEventListener("click", function(){
+      tlSel = +g.getAttribute("data-i"); var m = MS[tlSel];
+      $("msInfo").innerHTML = "<b>" + m.d + (m.late ? "（或更晚）" : "") + "　" + m.lab.replace("⇢", "") + "</b> " + tlStatus(m) + "<p style='margin:6px 0 0'>" + m.txt + "</p>";
+      drawTL();
+    });
+  });
+  drawTLList();
+}
+each("#tlFilter button", function(b){
+  b.addEventListener("click", function(){
+    each("#tlFilter button", function(o){ o.classList.remove("on"); }); b.classList.add("on");
+    tlF = b.getAttribute("data-f"); drawTL();
+  });
+});
+drawTL();
+
+/* ---------- ⑥ 空隙比 ---------- */
+function drawBoxPic(r, fillPct){
+  if (!r) return "";
+  var W = 300, H = 170, s = '<svg viewBox="0 0 ' + W + ' ' + (H + 30) + '">';
+  var prodH = Math.min(1, r.prodV / r.boxV) * H;
+  var emptyH = H - prodH, fillH = emptyH * fillPct / 100;
+  s += '<rect x="40" y="10" width="220" height="' + H + '" fill="none" stroke="var(--ink)" stroke-width="2.5"/>';
+  s += '<rect x="42" y="' + (10 + H - prodH) + '" width="216" height="' + prodH + '" fill="var(--eu)" opacity=".75"/>';
+  if (fillH > 0) {
+    s += '<rect x="42" y="' + (10 + emptyH - fillH) + '" width="216" height="' + fillH + '" fill="var(--mid)" opacity=".35"/>';
+    for (var i = 0; i < 18; i++) s += '<circle cx="' + (52 + (i * 37) % 200) + '" cy="' + (14 + emptyH - fillH * ((i * 53) % 100) / 100) + '" r="4" fill="var(--mid)" opacity=".7"/>';
+  }
+  s += '<text x="150" y="' + (10 + H - prodH / 2 + 5) + '" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">商品 ' + Math.round(r.prodV / r.boxV * 100) + '%</text>';
+  if (emptyH > 18) s += '<text x="150" y="' + (10 + emptyH / 2 + 5) + '" text-anchor="middle" font-size="13" fill="var(--ink)">空隙 ' + Math.round(r.ratio * 100) + '%' + (fillPct ? '（含填充料）' : '') + '</text>';
+  s += '<text x="150" y="' + (H + 28) + '" text-anchor="middle" font-size="12" fill="var(--muted)">示意：把容積比例畫成高度</text>';
+  return s + "</svg>";
+}
+function updESR(){
+  var n = +$("pn").value, f = +$("fill").value;
+  $("nV").textContent = n + " 個"; $("fV").textContent = f + "%";
+  var r = emptySpace(+$("bL").value, +$("bW").value, +$("bH").value, +$("pL").value, +$("pW").value, +$("pH").value, n);
+  if (!r) { $("esr").textContent = "—"; $("esrMsg").innerHTML = ""; $("boxPic").innerHTML = ""; return; }
+  if (!r.fits) {
+    $("esr").textContent = "裝不下";
+    $("esrFill").style.width = "0%";
+    $("esrMsg").innerHTML = '<div class="warn">' + (r.oneFits ? "商品總容積比外箱大" : "單個商品的尺寸放不進這個箱子") + '，請檢查尺寸或數量。</div>';
+    $("boxPic").innerHTML = ""; return;
+  }
+  var pct = r.ratio * 100, ok = pct <= 50;
+  $("esr").textContent = fmt(pct, 1) + "%";
+  $("esr").style.color = ok ? "var(--good)" : "var(--warn)";
+  $("esrFill").style.width = pct + "%";
+  $("esrFill").style.background = ok ? "var(--good)" : "var(--warn)";
+  var maxV = r.prodV * 2, scale = Math.cbrt(maxV / r.boxV);
+  var msg = ok ? '<div class="good">✓ 在 50% 以內。</div>'
+               : '<div class="warn">✕ 超過 50%。要合規，外箱容積最多 ' + fmt(maxV / 1e6, 1) + ' 公升（現在 ' + fmt(r.boxV / 1e6, 1) + ' 公升）。如果長寬高等比例縮，每邊大約要縮到現在的 ' + Math.round(scale * 100) + '%。</div>';
+  if (f > 0) msg += '<div class="midb">塞了 ' + f + '% 填充料，<b>空隙比完全沒變</b>：法規把碎紙、氣泡布、保麗龍粒都算成空隙。</div>';
+  $("esrMsg").innerHTML = msg;
+  $("boxPic").innerHTML = drawBoxPic(r, f);
+}
+["bL","bW","bH","pL","pW","pH","pn","fill"].forEach(function(id){ $(id).addEventListener("input", updESR); });
+updESR();
+
+/* ---------- ⑦ 回收評等 ---------- */
+function updRec(){
+  var p = +$("gPaper").value || 0, pl = +$("gPl").value, ot = +$("gOt").value, tot = p + pl + ot;
+  $("gPlV").textContent = pl + " g"; $("gOtV").textContent = ot + " g";
+  if (!(tot > 0)) return;
+  var pct = p / tot * 100, g = grade(pct), plPct = pl / tot * 100;
+  $("recPct").textContent = fmt(pct, 1) + "%";
+  each(".gr", function(e){ e.classList.toggle("on", e.classList.contains(g)); });
+  var m = { A: '<div class="good">A 級：2030、2038 都可以賣。</div>', B: '<div class="good">B 級：2030、2038 都可以賣。</div>',
+            C: '<div class="midb">C 級：2030 可以賣，<b>2038 起不能賣</b>。</div>', X: '<div class="warn">低於 70%：<b>2030 起就不能賣</b>。</div>' };
+  $("recMsg").innerHTML = m[g];
+  $("plMsg").innerHTML = "塑膠占總重 " + fmt(plPct, 1) + "%" + (plPct > 5 ? "，<b style='color:var(--warn)'>超過 FEFCO 建議的 5%</b>" : plPct > 3 ? "，在 5% 內，但業界偏好壓到 3% 以下" : "，在業界偏好的 3% 以內") + "（業界指南，不是法規）。<br>" +
+    (pl > 0 ? (plPct < 5 ? "✎ 塑膠不到整件 5%：<b>免</b>塑膠再生料比例（第 7 條，法規）。" : "✎ 塑膠達整件 5% 以上：2030 年起那塊塑膠要符合再生料比例（第 7 條，法規）。") + "兩個 5% 數字相同，但是不同的兩件事。" : "");
+}
+["gPaper","gPl","gOt"].forEach(function(id){ $(id).addEventListener("input", updRec); });
+updRec();
+
+/* ---------- ⑧ 準備清單 ---------- */
+var CK = [
+  ["每款箱子的基本資料：名稱、編號、用途", "經濟部、顧問整理"],
+  ["結構與設計：尺寸、展開圖、刀模圖", "顧問整理"],
+  ["材料組成：每一層紙的材質、重量、紙廠來源", "經濟部、顧問整理"],
+  ["油墨、色料的重金屬檢測報告（鉛、鎘、汞、六價鉻；方法 IEC 62321）　※手上已有一份數位印刷水性墨水報告，但只測黑色、註明僅供內部參考", "第 5 條"],
+  ["有碰食品的箱子：PFAS 檢測報告（方法 EN 17681-1 改良法）", "第 5 條"],
+  ["✎ 每批箱子查得到批號（例如製造單號），客戶要求時能印在箱上", "第 15 條"],
+  ["✎ 客戶要求印材質代碼時，瓦楞用 PAP 20（不是紙盒的 PAP 21）", "97/129/EC，2028 廢止"],
+  ["塗層、淋膜、膠水的種類和用量", "可回收性評估要用"],
+  ["可回收性說明：是不是單一材質、有沒有難分離的複合層", "顧問整理"],
+  ["空隙比計算（電商、運輸、組合包裝）", "經濟部"],
+  ["文件保存制度：5 年（一次性）／10 年（重複使用），抽查 10 天內交得出來", "Art.17、經濟部"]
+];
+function renderCK(){
+  var h = "";
+  CK.forEach(function(c, i){ h += '<label><input type="checkbox" data-i="' + i + '"><div>' + c[0] + '<div class="who">依據：' + c[1] + "</div></div></label>"; });
+  $("ckList").innerHTML = h;
+  each("#ckList input", function(cb){ cb.addEventListener("change", progCK); });
+  progCK();
+}
+function progCK(){
+  var n = document.querySelectorAll("#ckList input:checked").length;
+  $("ckProg").textContent = "已備齊 " + n + " ／ " + CK.length + " 項" + (n === CK.length ? "　✓ 全部備齊" : "");
+}
+renderCK();
+
+/* ---------- ⑪ SGS 講義對照 ---------- */
+var SGS = [
+  ["ok",  "第 24 頁", "「包材供應商」列在經濟營運者裡", "原文第 3 條第 1 項第 12 款確實列了 supplier。<b>我們第 1 版說龍鑫不受直接管，是錯的</b>", "龍鑫有第 16 條交資料義務"],
+  ["ok",  "第 28 頁", "案例：中國工廠做紙箱＝供應商，要給品牌商材質報告、重金屬證明", "與第 16 條一致", "就是龍鑫的位置"],
+  ["new", "第 21、25 頁", "包裝上要有批號、品牌商名稱與地址", "第 15 條第 5、6 項，運輸箱沒有豁免，2026/8/12 起", "客戶可能請你印；製造單號可當批號"],
+  ["new", "第 44～46 頁", "材質代碼表：瓦楞紙板 PAP 20", "97/129/EC，歐盟層級自願使用，2028/8/12 廢止", "瓦楞箱別印成 PAP 21"],
+  ["new", "第 10 頁", "塑膠占整件 &lt;5% 免再生料比例", "第 7 條第 5 項 (b) 款", "小塑膠窗多半免，但要秤重"],
+  ["new", "第 9 頁", "「大規模回收」＝歐盟年回收量 ≥55%（木材 30%）", "第 3 條第 1 項第 39 款", "2035 年起的門檻"],
+  ["new", "第 12 頁", "標示上路前已進歐盟的包裝可再賣 3 年", "第 12 條第 12 項", "台灣端還沒出貨的不算"],
+  ["new", "第 23、40 頁", "檢測方法：重金屬 IEC 62321、PFAS EN 17681-1、可回收 EN 13430、減量 EN 13428", "講義資訊（檢驗機構實務）", "跟檢驗單位溝通用得上"],
+  ["new", "第 36 頁", "各國罰則 2027/2/12 前訂好", "第 68 條", "—"],
+  ["warn","第 25 頁", "「微型企業（員工&lt;20人）之包材供應商適用製造商義務」", "原文：微型企業是 <b>少於 10 人</b>；而且是<b>品牌商</b>小時，責任轉給<b>歐盟境內</b>供應商", "龍鑫 18 人，別誤以為要扛製造商責任"],
+  ["warn","第 8 頁", "可回收要求「不適用於藥品或醫療相關」", "原文只豁免醫療器材<b>接觸敏感包裝</b>、藥品直接包裝等", "醫療客戶的外箱不豁免"],
+  ["warn","第 19 頁", "材質標示「不適用：運輸包材」", "原文有但書：<b>電商包裝除外</b>", "電商箱仍要貼"],
+  ["warn","第 23 頁", "標示生效日 2028/2/12", "第 19、20 頁和原文都是 2028/8/12", "講義前後不一致，應是筆誤"],
+  ["warn","第 23 頁", "「SGS 解決方案」檢測項目表", "內容沒錯，但這頁是在介紹自家服務", "要不要送驗，看客戶實際要求"]
+];
+var SGSTAG = { ok: '<span class="tag ok">講義對、我們錯</span>', "new": '<span class="tag tw">講義有、我們沒有</span>', warn: '<span class="tag now">講義要小心</span>' };
+function renderSGS(k){
+  var h = "<tr><th>類別</th><th>講義</th><th>講義寫的</th><th>對照法規原文</th><th>對龍鑫</th></tr>";
+  SGS.forEach(function(r){ if (k === "all" || r[0] === k) h += "<tr><td>" + SGSTAG[r[0]] + "</td><td>" + r[1] + "</td><td>" + r[2] + "</td><td>" + r[3] + "</td><td>" + r[4] + "</td></tr>"; });
+  $("sgsTbl").innerHTML = h;
+  labelTables();
+}
+each("#sgsSeg button", function(b){
+  b.addEventListener("click", function(){
+    each("#sgsSeg button", function(o){ o.classList.remove("on"); }); b.classList.add("on");
+    renderSGS(b.getAttribute("data-k"));
+  });
+});
+renderSGS("all");
+
+/* ---------- ⑪ 誤會 ---------- */
+each(".myths .myth", function(b){ b.addEventListener("click", function(){ b.classList.toggle("open"); }); });
+labelTables();
+</script>
+</body>
+</html>
